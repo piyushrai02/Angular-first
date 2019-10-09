@@ -1,0 +1,312 @@
+<link
+  href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+  rel="stylesheet"
+  id="bootstrap-css"
+/>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<p>{{ Employee.value | json }}</p>
+<div class="container register">
+  <div class="row">
+    <div class="col-md-3 register-left">
+      <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt="" />
+      <h3>Welcome</h3>
+      <p>You are 30 seconds away from earning your own money!</p>
+      <input type="submit" name="" value="Login" /><br />
+    </div>
+    <div class="col-md-9 register-right">
+      <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+        <li class="nav-item">
+          <a
+            class="nav-link active"
+            id="home-tab"
+            data-toggle="tab"
+            href="#home"
+            role="tab"
+            aria-controls="home"
+            aria-selected="true"
+            >Employee</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            id="profile-tab"
+            data-toggle="tab"
+            href="#profile"
+            role="tab"
+            aria-controls="profile"
+            aria-selected="false"
+            >Hirer</a
+          >
+        </li>
+      </ul>
+      <div class="tab-content" id="myTabContent">
+        <div
+          class="tab-pane fade show active"
+          id="home"
+          role="tabpanel"
+          aria-labelledby="home-tab"
+        >
+          <h3 class="register-heading">Apply as a Employee</h3>
+          <form [formGroup]="Employee" (ngSubmit)="onSubmit1()">
+            <div class="row register-form">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="First Name *"
+                    value=""
+                    formControlName="firstName"
+                    required
+                  />
+                  <!-- <div *ngIf="submitted && firstName.invalid && (firstName.dirty || firstName.touched)">
+                                                    <div class="danger1">
+                                                <div *ngIf="firstName.errors.required" class="form-error">this is requried</div>
+                                                <div *ngIf="firstName.errors.minlength" class="form-error">At least 6 Char</div>
+                                            </div>
+                                            </div>  -->
+                  <div
+                    *ngIf="submitted && Employee.controls.firstName.errors"
+                    class="alt alert-danger mt-2"
+                    role="alert"
+                  >
+                    <div class="danger1">Your First name is requrid</div>
+                    <div *ngIf="Employee.controls.firstName.errors.minlength">
+                      The length is Atleast 6
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Last Name *"
+                    value=""
+                    formControlName="lastName"
+                  />
+                  <div *ngIf="submitted && Employee.controls.lastName.errors">
+                      <div class="danger1">
+                          Last Name is Required
+
+                      </div>
+                  </div>
+                  <div
+                    *ngIf="
+                      lastName.invalid && (lastName.dirty || lastName.touched)
+                    "
+                  >
+                    <div class="danger1">
+                      <div *ngIf="lastName.errors.required" class="form-error">
+                        this is requried
+                      </div>
+                      <div *ngIf="lastName.errors.minlength" class="form-error">
+                        At least 6 Char
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <input
+                    type="password"
+                    class="form-control"
+                    placeholder="Password *"
+                    value=""
+                    formControlName="password"
+                    [ngClass]="{ 'is-invalid': submitted && f.password.errors }"/>
+                  
+                  <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                      <div *ngIf="f.password.errors.required"> Password is required </div>
+                      <div *ngIf="f.password.errors.minlength"> Password must be at least 6 characters </div>
+                  </div>
+                </div>
+                <div class="form-group"><input type="password" class="form-control" placeholder="Confirm Password *" value="" formControlName="confirmPassword" [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }" />
+                  <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
+                      <div *ngIf="f.confirmPassword.errors.required">Confirm Password is required</div>
+                      <div *ngIf="f.confirmPassword.errors.mustMatch">Passwords must match</div>
+                  </div>
+                  <div *ngIf="Employee.password!=Employee.confirmPassword">
+                      <div>password is not match</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                  <div class="maxl">
+                    <label class="radio inline">
+                      <input type="radio" name="gender" value="male" checked />
+                      <span> Male </span>
+                    </label>
+                    <label class="radio inline">
+                      <input type="radio" name="gender" value="female" />
+                      <span>Female </span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <input
+                    type="email"
+                    class="form-control"
+                    placeholder="Your Email *"
+                    value=""
+                    formControlName="email"
+                    required
+                  />
+                  <div *ngIf="submitted && Employee.controls.email.errors">
+                        <div class="danger1">
+                            Email is Required
+  
+                        </div>
+                        <div class="danger1" *ngIf="submitted && Employee.controls.email.errors.email">
+                                Email is correct
+      
+                            </div>
+                    </div>
+                  <div *ngIf="email.invalid && (email.dirty || email.touched)">
+                    <div class="danger1">
+                      <div *ngIf="email.errors.required" class="form-error">
+                        this is requried
+                      </div>
+                      <div *ngIf="email.errors.email" class="form-error">
+                        Please correct the Email
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <input
+                    type="text"
+                    minlength="10"
+                    maxlength="10"
+                    name="txtEmpPhone"
+                    class="form-control"
+                    placeholder="Your Phone *"
+                    value=""
+                    formControlName="phone"
+                    required
+                  />
+                  <div *ngIf="submitted && Employee.controls.phone.errors">
+                        <div class="danger1">
+                            Phone is Requried
+  
+                        </div>
+                  </div>
+                  <div *ngIf="phone.invalid && (phone.dirty || phone.touched)">
+                    <div class="danger1">
+                      <div *ngIf="phone.errors.required" class="form-error">
+                        this is requried
+                      </div>
+                      <div *ngIf="phone.errors.minlength" class="form-error">
+                        Please FIll the correct Phone Number
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group" formGroupName="address">
+                  <input
+                    type="text"
+                    minlength="10"
+                    maxlength="10"
+                    name="txtEmpState"
+                    class="form-control"
+                    placeholder="Your State *"
+                    value=""
+                    formControlName="state"
+                    required
+                  /><br />
+
+                  <input
+                    type="text"
+                    minlength="10"
+                    maxlength="10"
+                    name="txtEmpCity"
+                    class="form-control"
+                    placeholder="Your city *"
+                    value=""
+                    formControlName="city"
+                    required
+                  /><br />
+                  <input
+                    type="text"
+                    minlength="10"
+                    maxlength="10"
+                    name="txtEmppinCode"
+                    class="form-control"
+                    placeholder="Your PinCode *"
+                    value=""
+                    formControlName="pinCode"
+                    required
+                  /><br />
+                </div>
+                <div class="form-group">
+                  <select class="form-control">
+                    <option class="hidden" selected disabled
+                      >Please select your Sequrity Question
+                    </option>
+                    <option>What is your Birthdate?</option>
+                    <option>What is Your old Phone Number</option>
+                    <option>What is your Pet Name?</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Enter Your Answer *"
+                    value=""
+                  />
+                  <p>{{message}}</p>
+                </div>
+                <input type="submit" class="btnRegister" value="submit" />
+              </div>
+            </div>
+
+          </form>
+        </div>
+        <!-- <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                <h3  class="register-heading">Apply as a Hirer</h3>
+                                <div class="row register-form">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="First Name *" value="" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Last Name *" value="" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="email" class="form-control" placeholder="Email *" value="" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" maxlength="10" minlength="10" class="form-control" placeholder="Phone *" value="" />
+                                        </div>
+
+
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="password" class="form-control" placeholder="Password *" value="" />
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" class="form-control" placeholder="Confirm Password *" value="" />
+                                        </div>
+                                        <div class="form-group">
+                                            <select class="form-control">
+                                                <option class="hidden"  selected disabled>Please select your Sequrity Question</option>
+                                                <option>What is your Birthdate?</option>
+                                                <option>What is Your old Phone Number</option>
+                                                <option>What is your Pet Name?</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="`Answer *" value="" />
+                                        </div>
+                                        <input type="submit" class="btnRegister"  value="Register"/>
+                                    </div>
+                                </div>
+                            </div> -->
+      </div>
+    </div>
+  </div>
+</div>

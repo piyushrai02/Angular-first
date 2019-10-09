@@ -1,0 +1,46 @@
+
+                      
+                    
+                     <div class="container" style="text-align: center;padding: 150px;">
+                          <!-- <div >
+                              <input type="text"  placeholder="Username" [formControl]="username">
+                            
+                          </div><br>
+                          {{username.value}}     <--this is For m Sing formm Control-->
+                            <p>{{login.value | json}}</p>
+                            <form   [formGroup]="login" (ngSubmit)="onSubmit()">
+                                <div>
+                                    <input type="text"  placeholder="Username" formControlName='username' required>
+                                    <div *ngIf="login.controls.username.errors" class="errorMessage">
+                                        <div>
+                                            username is required
+                                        </div> 
+                                        <div *ngIf="login.controls.username.errors.email">
+                                            <div>Please Fill the Correct username </div>
+                                        </div>
+
+                                    </div>
+                                   
+                                </div><br>
+                                   
+                                <div >
+                                    <input type="password"  placeholder="Password" formControlName='password'>
+                                    <div *ngIf="login.controls.password.errors" class="errorMessage"> 
+                                        <div>Password is Required</div>
+                                    </div>
+                                </div><br>
+                                <p>{{message}}</p>
+                                <p>{{errorMessage}}</p>
+                            <div>
+                              <!-- <a href="dashboard.html" class="btn btn-danger">Log In</a> -->
+                              <button type="submit" class="btn btn-primary">Log In</button>
+                            </div>
+                        </form> 
+                    </div>
+                    
+                      
+                          
+              
+      
+ 
+  

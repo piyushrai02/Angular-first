@@ -1,0 +1,67 @@
+<section class="cmspage mtb-40">
+    <div class="container">
+      <div class="page-desc">
+        <div class="row justify-content-center">
+          <div class="col-md-8">
+            <h1>Contact Us</h1>
+            <form [formGroup]='Contact' >
+              <div class="form-group">
+                <input type="text" name="name" class="form-control" formControlName="name" placeholder="Name">
+                <div
+                    *ngIf="Contact.controls.name.errors"
+                    class="alt alert-danger mt-2"
+                    role="alert"
+                  >
+                    <div class="danger1">Your Name is requrid</div>
+                    <div *ngIf="Contact.controls.name.errors.minlength">
+                      The length is Atleast 6
+                    </div>
+                  </div>
+                <!-- <div style="color: red;font-weight:bolder;font-size: 16px;">
+                <div *ngIf="Contact.controls.name.errors.minlength ">
+                    The length is Atleast 6
+                  </div>
+                  <div *ngIf="Contact.controls.name.touched">
+                      Name is Required
+                    </div>
+                  </div> -->
+              </div>
+              <div class="form-group">
+                <input type="text" name="email" class="form-control" formControlName="email"  placeholder="E-Mail">
+                <div *ngIf="Contact.controls.email.errors" class="alt alert-danger mt-2"
+                role="alert">
+                  <div>
+                    Email is Required
+                  </div>
+                  <div *ngIf="Contact.controls.email.errors.email">
+                    <span>Email is Correct</span>
+                  </div>
+
+                </div>
+              </div>
+              <div class="form-group">
+                <input type="text" name="phone" class="form-control" formControlName="phone"  placeholder="Phone">
+                <div *ngIf="Contact.controls.phone.errors" class="alt alert-danger mt-2"
+                role="alert">
+                    <div>
+                      Phone is Required
+                    </div>
+                    <div *ngIf="Contact.controls.phone.errors.minlength">
+                      <span>phone is Correct</span>
+                    </div>
+  
+                  </div>
+              </div>
+              <div class="form-group">
+                <textarea name="message" rows="5" class="form-control" placeholder="Message"></textarea>
+              </div>
+              <div class="form-group">
+                <button class="btn btn-success">Send</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+                  
